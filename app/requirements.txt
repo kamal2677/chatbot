@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+groq
+pandas
+faiss-cpu
+python-dotenv
+watchdog
