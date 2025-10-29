@@ -24,7 +24,7 @@ app.add_middleware(
 )
 
 # Use /data folder for Excel and embeddings
-DATA_DIR = "/data"
+DATA_DIR = "../data"
 KB_PATH = os.path.join(DATA_DIR, "knowledge.xlsx")
 EMB_PATH = os.path.join(DATA_DIR, "embeddings.pkl")
 os.makedirs(DATA_DIR, exist_ok=True)
