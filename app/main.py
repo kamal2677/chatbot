@@ -74,7 +74,8 @@ async def root():
 @app.post("/ask")
 async def ask(request: Request):
     data = await request.json()
-    query = data.get("message", "")
+    query = data.get("message", {}).get("text", "")
+    #query = data.get("message", "")
     if not query:
         return {"reply": "Please provide a question."}
 
@@ -94,14 +95,20 @@ Question: {query}
 
     try:
         completion = client.chat.completions.create(
-            model="llama3-70b-8192",
+            model="llama-3.1-8b-instant",
             messages=[{"role": "user", "content": prompt}],
         )
         reply = completion.choices[0].message.content
     except Exception as e:
         reply = f"Error from Groq: {e}"
 
-    return {"reply": reply}
+    return {
+        "replies": [
+            {
+                "text": reply
+            }
+        ]
+            }
 
 # --- Upload Excel Endpoint ---
 @app.post("/upload")
