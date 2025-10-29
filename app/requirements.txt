@@ -5,3 +5,5 @@ pandas
 faiss-cpu
 python-dotenv
 watchdog
+python-multipart
+openpyxl
